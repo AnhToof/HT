@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Result;
-use App\User;
 use Illuminate\Http\Request;
 
 class ResultController extends Controller
@@ -16,7 +15,7 @@ class ResultController extends Controller
     public function index()
     {
         //
-        $results = Result::all()->toArray();
+        $results = Result::paginate(9);
         return view('userdata', compact('results'));
     }
 

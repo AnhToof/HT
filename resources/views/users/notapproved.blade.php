@@ -19,7 +19,7 @@
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="#">Quản lý tài khoản</a></li>
-                <li class="active">Tài khoản chưa cho phép</li>
+                <li>Tài khoản chưa cho phép</li>
             </ol>
         </section>
 
@@ -41,44 +41,40 @@
                         <table id="notapproved" class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th>Email</th>
-                                <th>Họ và tên</th>
-                                <th>Ngày sinh</th>
-                                <th>Giới tính</th>
-                                <th>Cho phép</th>
-                                <th>Từ chối</th>
+                                <th style="text-align: center ;vertical-align:middle">Email</th>
+                                <th style="text-align: center ;vertical-align:middle">Họ và tên</th>
+                                <th style="text-align: center ;vertical-align:middle">Ngày sinh</th>
+                                <th style="text-align: center ;vertical-align:middle">Giới tính</th>
+                                <th style="text-align: center ;vertical-align:middle">Cho phép</th>
+                                <th style="text-align: center ;vertical-align:middle">Từ chối</th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($users as $user)
                                 @if($user['status'] == 0 && $user['isAdmin'] == 0)
                                     <tr>
-                                        <td>{{$user['email']}}</td>
-                                        <td>{{$user['fullname']}}</td>
-                                        <td>{{$user['dob']}}</td>
-                                        <td>
+                                        <td style="text-align: center ;vertical-align:middle">{{$user['email']}}</td>
+                                        <td style="text-align: center ;vertical-align:middle">{{$user['fullname']}}</td>
+                                        <td style="text-align: center ;vertical-align:middle">{{$user['dob']}}</td>
+                                        <td style="text-align: center ;vertical-align:middle">
                                             @if($user['sex'] == 1)
                                                 Nam
                                             @else
                                                 Nữ
                                             @endif
                                         </td>
-                                        <td>
-                                            <form method="POST" action="{{route('notapproved.update', ['id' =>$user['id']])}}">
-                                                {{ csrf_field() }}
+                                        <form method="PUT" action="{{route('notapproved.edit', ['id' =>$user['id']])}}">
+                                            <td style="text-align: center ;vertical-align:middle">
+
                                                 <button type="submit" class="btn btn-sm btn-success">Cho phép</button>
-                                            </form>
 
-
-                                        </td>
-
-                                        <td>
-                                            <form method="POST" action="{{route('notapproved.destroy', ['id' =>$user['id']])}}">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-sm btn-warning">Từ chối</button>
-                                            </form>
-
+                                            </td>
+                                        </form>
+                                        <td style="text-align: center ;vertical-align:middle">
+                                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
+                                                    data-target="#delete-user{{$user['id']}}">Từ chối
+                                            </button>
+                                            @include('users.modals.delete')
                                         </td>
                                     </tr>
                                 @endif
@@ -87,6 +83,7 @@
                             </tbody>
 
                         </table>
+                        {{$users->links()}}
 
                         @include('users.modals.add')
 

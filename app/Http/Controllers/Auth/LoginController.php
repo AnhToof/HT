@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\MessageBag;
 
 class LoginController extends Controller
 {
@@ -38,6 +40,15 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $this->validate($request, [
+            $this->email() => 'required',
+            'password' => 'required',
+            // new rules here
+        ]);
+    }
     public function authenticate(Request $request)
     {
         $data=[
@@ -47,9 +58,13 @@ class LoginController extends Controller
         ];
         if (Auth::attempt($data)) {
             // Authentication passed...
+
             return redirect()->intended('dashboard');
-        }else
-            return redirect()->intended('login');
+        } else {
+            $errors = new MessageBag(['password' => ['Sai email hoặc mật khẩu']]);
+
+            return redirect()->intended('login')->withErrors($errors)->withInput(Input::except('password'));
+        }
     }
     public function logout(Request $request)
     {

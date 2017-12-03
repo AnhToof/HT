@@ -12,7 +12,7 @@
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                 <li><a href="#">Quản lý dữ liệu huyết áp</a></li>
-                <li class="active">Dữ liệu chế độ dinh dưỡng</li>
+                <li>Dữ liệu chế độ dinh dưỡng</li>
             </ol>
         </section>
 
@@ -47,11 +47,11 @@
                                             @include('bpdata.modals.nutrition.edit')
                                         </td>
                                         <td>
-                                            <form method="POST" action="{{route('bpnutrition.destroy', ['id' => $nutrition['id']])}}">
-                                                {{ csrf_field() }}
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <button type="submit" class="btn btn-sm btn-warning">Xóa</button>
-                                            </form>
+                                            <button data-toggle="modal"
+                                                    data-target="#delete-bpnutrition{{$nutrition['id']}}" type="button"
+                                                    class="btn btn-sm btn-warning">Xóa
+                                            </button>
+                                            @include('bpdata.modals.nutrition.delete')
 
                                         </td>
 
@@ -62,6 +62,7 @@
                                 </tbody>
 
                             </table>
+                            {{$nutritions->links()}}
                         </div>
                         <!-- /.box-body -->
                     </div>

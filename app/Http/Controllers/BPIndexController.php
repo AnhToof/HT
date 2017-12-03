@@ -15,8 +15,9 @@ class BPIndexController extends Controller
      */
     public function index()
     {
-        $indices = BPIndex::all()->toArray();
+        $indices = BPIndex::paginate(9);
         $diagnoses = BPDiagnose::pluck('id');
+
         return view('bpdata.index', compact('indices', 'diagnoses'));
     }
 
@@ -47,7 +48,7 @@ class BPIndexController extends Controller
         $index->to_diastolic = $request->to_diastolic;
         $index->diagnose_id = $request->diagnose_id;
         $index->save();
-        $request->session()->flash('alert-success', 'Đã tạo tài khoản thành công');
+        $request->session()->flash('alert-success', 'Đã tạo chỉ số thành công');
         return redirect('bpindex');
     }
 
@@ -79,6 +80,7 @@ class BPIndexController extends Controller
             'to_diastolic' => $request->to_diastolic,
             'diagnose_id' => $request->diagnose_id
         ]);
+        $request->session()->flash('alert-success', 'Đã sửa chỉ số thành công');
         return redirect('bpindex');
     }
 
@@ -100,10 +102,11 @@ class BPIndexController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
         BPIndex::where('id', $id)->delete();
+        $request->session()->flash('alert-success', 'Đã xóa chỉ số thành công');
         return redirect('bpindex');
     }
 }

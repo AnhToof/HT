@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class ApprovedController extends Controller
 {
@@ -24,7 +24,7 @@ class ApprovedController extends Controller
     public function index()
     {
         //
-        $users = User::all();
+        $users = User::paginate(9);
 
         return view('users.approved', compact('users'));
     }
@@ -51,6 +51,7 @@ class ApprovedController extends Controller
 
         $user = User::where('email', '=', $request->get('email'))->first();
         if ($user == null) {
+
             $user = new User;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
@@ -62,7 +63,7 @@ class ApprovedController extends Controller
 
             $user->save();
             $request->session()->flash('alert-success', 'Đã tạo tài khoản thành công');
-            return redirect('approved');
+            return redirect('notapproved');
         }
         $request->session()->flash('alert-danger', 'Tài khoản đã tồn tại');
         return redirect()->back();
@@ -89,12 +90,13 @@ class ApprovedController extends Controller
     public function edit(Request $request, $id)
     {
 
-    User::where('id', $id)->update(
-        ['fullname' => $request->fullname],
-        ['dob' => $request->dob],
-        ['sex' => $request->sex]
-    );
-    return redirect('approved');
+        User::where('id', $id)->update([
+            'fullname' => $request->fullname,
+            'dob' => $request->dob,
+            'sex' => $request->sex
+        ]);
+        $request->session()->flash('alert-success', 'Đã sửa tài khoản thành công');
+        return redirect('approved');
     }
 
     /**
@@ -120,10 +122,12 @@ class ApprovedController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
+
         User::where('id', $id)->delete();
+        $request->session()->flash('alert-success', 'Đã xóa tài khoản thành công');
         return redirect('approved');
     }
     /**
@@ -144,4 +148,35 @@ class ApprovedController extends Controller
             'status' => 'required|boolean',
         ]);
     }
+
+    public function showUser(User $user)
+    {
+        return response()->json($user, 200);
+    }
+
+    public function storeUser(Request $request)
+    {
+        $user = User::create([
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'fullname' => $request->fullname,
+            'dob' => $request->dob,
+            'sex' => $request->sex,
+            'status' => 0,
+            'isAdmin' => 0,
+        ]);
+        return response()->json($user, 201);
+
+    }
+
+    public function updateUser(Request $request, User $user)
+    {
+        $user->update([
+            'fullname' => $request->fullname,
+            'dob' => $request->dob,
+            'sex' => $request->sex,
+        ]);
+        return response()->json($user, 200);
+    }
+
 }

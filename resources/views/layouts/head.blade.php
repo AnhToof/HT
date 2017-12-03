@@ -23,7 +23,12 @@
 <link rel="stylesheet" href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 <!-- Daterange picker -->
 <link rel="stylesheet" href="bower_components/bootstrap-daterangepicker/daterangepicker.css">
-<!-- bootstrap wysihtml5 - text editor -->
+<script src="bower_components/moment/moment.js"></script>
+<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+<link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.print.min.css" media="print">
+<!-- iCheck -->
+<link rel="stylesheet" href="plugins/iCheck/square/blue.css">
+<!-- bootstrap wysihtml5 - text editor -- >
 <link rel="stylesheet" href="plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -32,6 +37,22 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
+<style>
+    .flash-message {
+        bottom: 30px;
+        position: absolute;
+        right: 20px;
+        z-index: 10;
+    }
 
+    li.active {
+        background: #42A5F5;
+    }
+
+    a.active {
+        background: #42A5F5;
+    }
+
+</style>
 <!-- Google Font -->
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">

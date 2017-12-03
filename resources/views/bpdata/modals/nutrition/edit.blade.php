@@ -1,5 +1,6 @@
-<!-- Add Modal -->
-<div class="modal fade" id="edit-bpnutrition{{ $nutrition['id'] }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<!-- Edit Modal -->
+<div style="text-align: left ;vertical-align:baseline" class="modal fade" id="edit-bpnutrition{{ $nutrition['id'] }}"
+     tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -16,7 +17,7 @@
                         <label class="col-md-2 col-form-label">Chẩn đoán</label>
                         <div class="form-group col-md-10 ">
                             <select name="diagnose_id" id="diagnose_id" class="form-control" required>
-                                <option disabled selected>Chọn chẩn đoán</option>
+
                                 @foreach($diagnoses as $diagnose)
                                     <option value="{{$diagnose}}" @if($diagnose==$nutrition['diagnose_id']) selected = 'selected' @endif>{{\App\BPDiagnose::find($diagnose)['diagnose']}}</option>
                                 @endforeach
@@ -27,12 +28,15 @@
                     <div class="row">
                         <label class="col-md-2 col-form-label">Chế độ dinh dưỡng</label>
                         <div class="form-group col-md-10 ">
-                            <textarea class="form-control" name="nutrition" id="nutrition" rows="5">{{$nutrition['nutrition']}}</textarea>
+                            <textarea class="form-control" name="nutrition" id="nutrition" rows="5"
+                                      required>{{$nutrition['nutrition']}}</textarea>
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn crud-submit btn-success" id="btnSubmit" name="btnSubmit" >Lưu</button>
+                        <button type="submit" class="btn crud-submit btn-success" id="btnEditBPNutrition"
+                                name="btnEditBPNutrition">Lưu
+                        </button>
                     </div>
                 </form>
             </div>
