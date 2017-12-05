@@ -23,7 +23,7 @@
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input type="number" name="to_index" class="form-control" id="to_index" placeholder="12"
+                            <input type="number" min="0" name="to_index" class="form-control" id="to_index" placeholder="12"
                                    data-error="Vui lòng điền vào trường còn trống" required/>
                             <div class="help-block with-errors"></div>
                         </div>
@@ -38,7 +38,7 @@
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input type="number" name="to_age" class="form-control" id="to_age" max="150"
+                            <input type="number" min="0" name="to_age" class="form-control" id="to_age" max="150"
                                    placeholder="12" data-error="Vui lòng điền vào trường còn trống" required/>
                             <div class="help-block with-errors"></div>
                         </div>

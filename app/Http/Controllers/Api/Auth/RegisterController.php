@@ -27,15 +27,17 @@ class RegisterController extends Controller
             'dob' => 'required|date',
             'sex' => 'required|boolean'
         ]);
-
+        
         $user = User::create([
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'fullname' => $request->fullname,
-            'dob' => $request->dob,
-            'sex' => $request->sex,
+        'email' => $request->email,
+        'password' => bcrypt($request->password),
+        'fullname' => $request->fullname,
+        'dob' => $request->dob,
+        'sex' => $request->sex,
         ]);
 
         return $this->issueToken($request, 'password');
+        
+        
     }
 }

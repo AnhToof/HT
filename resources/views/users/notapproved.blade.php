@@ -72,9 +72,9 @@
                                         </form>
                                         <td style="text-align: center ;vertical-align:middle">
                                             <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
-                                                    data-target="#delete-user{{$user['id']}}">Từ chối
+                                                    data-target="#delete-usernp{{$user['id']}}">Từ chối
                                             </button>
-                                            @include('users.modals.delete')
+                                            @include('users.modals.deletenp')
                                         </td>
                                     </tr>
                                 @endif

@@ -25,7 +25,7 @@
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input value="{{$index['to_index']}}" type="number" name="to_index" class="form-control"
+                            <input value="{{$index['to_index']}}" min="0"  type="number" name="to_index" class="form-control"
                                    id="to_index-edit" placeholder="12" data-error="Vui lòng điền vào trường còn trống"
                                    required/>
                             <div class="help-block with-errors"></div>
@@ -42,7 +42,7 @@
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input max="150" value="{{$index['to_age']}}" type="number" name="to_age"
+                            <input min="0"  max="150" value="{{$index['to_age']}}" type="number" name="to_age"
                                    class="form-control" id="to_age-edit" placeholder="12"
                                    data-error="Vui lòng điền vào trường còn trống" required/>
                             <div class="help-block with-errors"></div>

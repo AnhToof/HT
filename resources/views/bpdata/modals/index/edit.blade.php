@@ -17,7 +17,7 @@
                     <div class="row">
                         <label class="col-md-2 col-form-label">Huyết áp tâm trương</label>
                         <div class="form-group col-md-4">
-                            <input type="number" name="from_systolic" class="form-control"
+                            <input min="0"  type="number" name="from_systolic" class="form-control"
                                    value="{{$index['from_systolic']}}"
                                    id="from_systolic-edit" placeholder="1" required/>
                             <div class="help-block with-errors"></div>
@@ -26,7 +26,7 @@
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input value="{{$index['to_systolic']}}" type="number" name="to_systolic"
+                            <input min="0"  value="{{$index['to_systolic']}}" type="number" name="to_systolic"
                                    class="form-control"
                                    id="to_systolic-edit" placeholder="12" required/>
                             <div class="help-block with-errors"></div>
@@ -35,14 +35,14 @@
                     <div class="row">
                         <label class="col-md-2 col-form-label">Huyết áp tâm trương</label>
                         <div class="form-group col-md-4">
-                            <input value="{{$index['from_diastolic']}}" type="number" name="from_diastolic"
+                            <input min="0"  value="{{$index['from_diastolic']}}" type="number" name="from_diastolic"
                                    class="form-control" id="from_diastolic-edit" placeholder="1" required/>
                             <div class="help-block with-errors"></div>
                         </div>
                         <label class="col-md-2 col-form-label"> - </label>
 
                         <div class="form-group col-md-4">
-                            <input value="{{$index['to_diastolic']}}" type="number" name="to_diastolic"
+                            <input min="0"  value="{{$index['to_diastolic']}}" type="number" name="to_diastolic"
                                    class="form-control" id="to_diastolic-edit" placeholder="12" required/>
                             <div class="help-block with-errors"></div>
                         </div>
