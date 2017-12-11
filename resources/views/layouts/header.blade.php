@@ -49,12 +49,9 @@
                                     <a href="" class="btn btn-default btn-flat">Login</a>
                                 </div>
                             @else
-                                <div class="pull-left">
-                                    <a href="" class="btn btn-default btn-flat">Profile</a>
-                                </div>
                                 <div class="pull-right">
                                     <a class="btn btn-default btn-flat" href="{{ route('logout') }}">
-                                        Logout
+                                        Đăng xuất
                                     </a>
                                 </div>
                             @endif

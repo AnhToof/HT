@@ -36,7 +36,7 @@
             </div>
 
 
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
 
         </form>
 

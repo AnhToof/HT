@@ -74,7 +74,7 @@
                                                 <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
                                                         data-target="#delete-user{{$user['id']}}">Xóa
                                                 </button>
-                                                @include('users.modals.delete')
+                                                @include('users.modals.delete_approved')
                                             </td>
                                         </tr>
                                     @endif

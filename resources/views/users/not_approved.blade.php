@@ -74,7 +74,7 @@
                                             <button type="button" class="btn btn-sm btn-warning" data-toggle="modal"
                                                     data-target="#delete-usernp{{$user['id']}}">Từ chối
                                             </button>
-                                            @include('users.modals.deletenp')
+                                            @include('users.modals.delete_not_approved')
                                         </td>
                                     </tr>
                                 @endif
