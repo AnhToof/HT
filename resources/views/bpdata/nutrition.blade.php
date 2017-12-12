@@ -41,7 +41,7 @@
 
                                     <tr>
                                         <td>{{\App\BPDiagnose::find($nutrition['diagnose_id'])->diagnose}}</td>
-                                        <td>{{$nutrition['nutrition']}}</td>
+                                        <td>{!! nl2br(e($nutrition['nutrition'])) !!}</td>
                                         <td>
                                             <button data-toggle="modal" data-target="#edit-bpnutrition{{$nutrition['id']}}" type="button" class="btn btn-sm btn-success">Sửa</button>
                                             @include('bpdata.modals.nutrition.edit')
@@ -73,7 +73,11 @@
                     @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                         @if(Session::has('alert-' . $msg))
 
-                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#"
+                                                                                                     class="close"
+                                                                                                     data-dismiss="alert"
+                                                                                                     aria-label="close">&times;</a>
+                            </p>
                         @endif
                     @endforeach
                 </div> <!-- end .flash-message -->

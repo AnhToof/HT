@@ -16,7 +16,7 @@ class HRNutritionController extends Controller
     public function index()
     {
         //
-        $nutritions = HRNutrition::paginate(9);
+        $nutritions = HRNutrition::paginate(7);
         $diagnoses = HRDiagnose::pluck('id');
         return view('hrdata.nutrition', compact('nutritions', 'diagnoses'));
     }

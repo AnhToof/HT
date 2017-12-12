@@ -24,7 +24,7 @@ class ApprovedController extends Controller
     public function index()
     {
         //
-        $users = User::paginate(9);
+        $users = User::paginate(7);
 
         return view('users.approved', compact('users'));
     }

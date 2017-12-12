@@ -39,7 +39,7 @@
                                 @if(Auth::check())
                                     {{Auth::user()->fullname}}
                                 @endif
-                                <span class="caret"> </span>
+
                             </p>
                         </li>
                         <!-- Menu Footer-->

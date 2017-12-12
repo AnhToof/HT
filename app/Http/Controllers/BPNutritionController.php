@@ -16,7 +16,7 @@ class BPNutritionController extends Controller
     public function index()
     {
         //
-        $nutritions = BPNutrition::paginate(9);
+        $nutritions = BPNutrition::paginate(7);
         $diagnoses = BPDiagnose::pluck('id');
         return view('bpdata.nutrition', compact('nutritions', 'diagnoses'));
     }
@@ -44,6 +44,8 @@ class BPNutritionController extends Controller
         $nutrition->diagnose_id = $request->diagnose_id;
         $nutrition->nutrition = $request->nutrition;
         $nutrition->save();
+        $request->session()->flash('alert-success', 'Đã tạo chế độ dinh dưỡng thành công');
+
         return redirect('bpnutrition');
     }
 
@@ -71,6 +73,8 @@ class BPNutritionController extends Controller
             'diagnose_id' => $request->diagnose_id,
             'nutrition' => $request->nutrition
         ]);
+        $request->session()->flash('alert-success', 'Đã sửa chế độ dinh dưỡng thành công');
+
         return redirect('bpnutrition');
     }
 
@@ -92,10 +96,12 @@ class BPNutritionController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
         BPNutrition::where('id', $id)->delete();
+        $request->session()->flash('alert-success', 'Đã xóa chế độ dinh dưỡng thành công');
+
         return redirect('bpnutrition');
     }
 }

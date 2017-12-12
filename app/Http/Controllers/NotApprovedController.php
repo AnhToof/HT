@@ -15,7 +15,7 @@ class NotApprovedController extends Controller
     public function index()
     {
         //
-        $users = User::paginate(9);
+        $users = User::paginate(7);
         return view('users.notapproved', compact('users'));
     }
 

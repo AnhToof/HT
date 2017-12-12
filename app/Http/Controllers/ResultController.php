@@ -15,7 +15,7 @@ class ResultController extends Controller
     public function index()
     {
         //
-        $results = Result::paginate(9);
+        $results = Result::paginate(7);
         return view('userdata', compact('results'));
     }
 

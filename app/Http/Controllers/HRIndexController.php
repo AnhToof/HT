@@ -16,7 +16,7 @@ class HRIndexController extends Controller
     public function index()
     {
         //
-        $indices = HRIndex::paginate(9);
+        $indices = HRIndex::paginate(7);
         $diagnoses = HRDiagnose::pluck('id');
         return view('hrdata.index', compact('indices', 'diagnoses'));
     }

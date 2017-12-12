@@ -42,7 +42,7 @@
 
                                     <tr>
                                         <td>{{\App\HRDiagnose::find($nutrition['diagnose_id'])->diagnose}}</td>
-                                        <td>{{$nutrition['nutrition']}}</td>
+                                        <td>{!! nl2br(e($nutrition['nutrition'])) !!}</td>
                                         <td>
                                             <button data-toggle="modal"
                                                     data-target="#edit-hrnutrition{{ $nutrition['id'] }}" type="button"

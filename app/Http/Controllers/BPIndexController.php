@@ -15,7 +15,7 @@ class BPIndexController extends Controller
      */
     public function index()
     {
-        $indices = BPIndex::paginate(9);
+        $indices = BPIndex::paginate(7);
         $diagnoses = BPDiagnose::pluck('id');
 
         return view('bpdata.index', compact('indices', 'diagnoses'));
